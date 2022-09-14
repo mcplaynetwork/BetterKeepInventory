@@ -23,7 +23,7 @@ public class PlayerDeathListener implements Listener {
 
         if (!plugin.isKeepCurseItems()) {
             for (ItemStack item : e.getDrops()) {
-                if (item.containsEnchantment(Enchantment.BINDING_CURSE)) {
+                if (item.getItemMeta().getEnchants().containsKey(Enchantment.VANISHING_CURSE)) {
                     e.getPlayer().getInventory().remove(item);
                 }
             }
