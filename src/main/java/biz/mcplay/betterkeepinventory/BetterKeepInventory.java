@@ -1,8 +1,7 @@
 package biz.mcplay.betterkeepinventory;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class BetterKeepinventory extends JavaPlugin {
+public final class BetterKeepInventory extends JavaPlugin {
 
     @Override
     public void onEnable() {
