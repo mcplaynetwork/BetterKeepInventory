@@ -1,0 +1,5 @@
+name: BetterKeepinventory
+version: '${version}'
+main: biz.mcplay.betterkeepinventory.BetterKeepinventory
+api-version: 1.19
+authors: [ snake ]
