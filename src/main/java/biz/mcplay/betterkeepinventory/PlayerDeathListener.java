@@ -18,6 +18,7 @@ public class PlayerDeathListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         if (plugin.isKeepInventoryEnabled()) {
             e.setKeepInventory(true);
+            e.getDrops().clear();
         }
 
         if (!plugin.isKeepCurseItems()) {
@@ -30,6 +31,7 @@ public class PlayerDeathListener implements Listener {
 
         if (plugin.isKeepLevelEnabled()) {
             e.setKeepLevel(true);
+            e.setDroppedExp(0);
         }
     }
 }
