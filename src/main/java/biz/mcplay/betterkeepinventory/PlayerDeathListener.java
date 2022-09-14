@@ -3,17 +3,33 @@ package biz.mcplay.betterkeepinventory;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class PlayerDeathListener implements Listener {
+
+    private final BetterKeepInventory plugin;
+
+    public PlayerDeathListener(BetterKeepInventory plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
-    public void onPlayerDeath(PlayerRespawnEvent e) {
-        for (int i = 0; i < e.getPlayer().getInventory().getSize(); i++) {
-            ItemStack item = e.getPlayer().getInventory().getItem(i);
-            if (item != null && item.hasItemMeta() && item.getItemMeta().hasEnchants() && item.getItemMeta().getEnchants().containsKey(Enchantment.VANISHING_CURSE)) {
-                e.getPlayer().getInventory().remove(item);
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        if (plugin.isKeepInventoryEnabled()) {
+            e.setKeepInventory(true);
+        }
+
+        if (!plugin.isKeepCurseItems()) {
+            for (ItemStack item : e.getDrops()) {
+                if (item.containsEnchantment(Enchantment.BINDING_CURSE)) {
+                    e.getPlayer().getInventory().remove(item);
+                }
             }
+        }
+
+        if (plugin.isKeepLevelEnabled()) {
+            e.setKeepLevel(true);
         }
     }
 }

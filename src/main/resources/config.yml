@@ -1,0 +1,5 @@
+keep-inventory:
+    enabled: true
+    keep-curse-items: false
+keep-levels:
+    enabled: true
