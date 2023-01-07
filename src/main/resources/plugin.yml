@@ -2,4 +2,5 @@ name: BetterKeepInventory
 version: '${version}'
 main: biz.mcplay.betterkeepinventory.BetterKeepInventory
 api-version: 1.13
-authors: [ snake ]
+authors: [ snake, MCPlayNetwork ]
+website: www.mcplay.biz
