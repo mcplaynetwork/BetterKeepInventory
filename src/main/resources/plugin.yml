@@ -4,3 +4,12 @@ main: biz.mcplay.betterkeepinventory.BetterKeepInventory
 api-version: 1.13
 authors: [ snake, MCPlayNetwork ]
 website: www.mcplay.biz
+commands:
+  bkireload:
+    description: Reloads the plugin.
+    permission: betterkeepinventory.reload
+
+permissions:
+  betterkeepinventory.reload:
+    description: Allows the user to reload the plugin.
+    default: op

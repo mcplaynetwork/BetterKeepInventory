@@ -1,5 +1,6 @@
 package biz.mcplay.betterkeepinventory;
 
+import biz.mcplay.betterkeepinventory.commands.ReloadCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BetterKeepInventory extends JavaPlugin {
@@ -12,6 +13,7 @@ public final class BetterKeepInventory extends JavaPlugin {
     @Override
     public void onEnable() {
         loadConfig();
+        getCommand("bkireload").setExecutor(new ReloadCommand(this));
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
     }
 
