@@ -15,11 +15,6 @@ public final class BetterKeepInventory extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
     }
 
-    @Override
-    public void onDisable() {
-        // Disable logic
-    }
-
     public void loadConfig() {
         saveDefaultConfig();
         reloadConfig();
