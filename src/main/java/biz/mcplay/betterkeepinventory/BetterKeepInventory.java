@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class BetterKeepInventory extends JavaPlugin {
 
     private boolean keepInventoryEnabled;
-    private boolean keepLevelEnabled;
+    private boolean keepExpEnabled;
     private boolean keepCurseItems;
 
 
@@ -20,18 +20,18 @@ public final class BetterKeepInventory extends JavaPlugin {
         reloadConfig();
         keepInventoryEnabled = getConfig().getBoolean("keep-inventory.enabled");
         keepCurseItems = getConfig().getBoolean("keep-inventory.keep-curse-items");
-        keepLevelEnabled = getConfig().getBoolean("keep-level.enabled");
+        keepExpEnabled = getConfig().getBoolean("keep-exp.enabled");
     }
 
-    public boolean isKeepInventoryEnabled() {
+    public boolean getKeepInventoryEnabled() {
         return keepInventoryEnabled;
     }
 
-    public boolean isKeepLevelEnabled() {
-        return keepLevelEnabled;
+    public boolean getKeepCurseItems() {
+        return keepCurseItems;
     }
 
-    public boolean isKeepCurseItems() {
-        return keepCurseItems;
+    public boolean getKeepExpEnabled() {
+        return keepExpEnabled;
     }
 }

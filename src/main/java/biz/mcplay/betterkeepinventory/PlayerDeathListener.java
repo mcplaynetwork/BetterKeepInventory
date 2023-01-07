@@ -16,20 +16,21 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
-        if (plugin.isKeepInventoryEnabled()) {
+        if (plugin.getKeepInventoryEnabled()) {
             e.setKeepInventory(true);
             e.getDrops().clear();
-        }
 
-        if (plugin.isKeepInventoryEnabled() && !plugin.isKeepCurseItems()) {
-            for (ItemStack item : e.getPlayer().getInventory().getContents()) {
-                if (item != null && item.getItemMeta().getEnchants().containsKey(Enchantment.VANISHING_CURSE)) {
-                    e.getPlayer().getInventory().remove(item);
+            // Remove curse items if keepCurseItems is false
+            if (!plugin.getKeepCurseItems()) {
+                for (ItemStack item : e.getPlayer().getInventory().getContents()) {
+                    if (item != null && item.getItemMeta().getEnchants().containsKey(Enchantment.VANISHING_CURSE)) {
+                        e.getPlayer().getInventory().remove(item);
+                    }
                 }
             }
         }
 
-        if (plugin.isKeepLevelEnabled()) {
+        if (plugin.getKeepExpEnabled()) {
             e.setKeepLevel(true);
             e.setDroppedExp(0);
         }

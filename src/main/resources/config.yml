@@ -1,5 +1,5 @@
 keep-inventory:
     enabled: true
     keep-curse-items: false
-keep-levels:
+keep-exp:
     enabled: true
