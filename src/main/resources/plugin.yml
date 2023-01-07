@@ -11,5 +11,5 @@ commands:
 
 permissions:
   betterkeepinventory.reload:
-    description: Allows the user to reload the plugin.
+    description: Allows you to use /bkireload.
     default: op
