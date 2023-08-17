@@ -20,10 +20,9 @@ public class PlayerDeathListener implements Listener {
             e.setKeepInventory(true);
             e.getDrops().clear();
 
-            // Remove curse items if keepCurseItems is false
             if (!plugin.getKeepCurseItems()) {
                 for (ItemStack item : e.getPlayer().getInventory().getContents()) {
-                    if (item != null && item.getItemMeta().getEnchants().containsKey(Enchantment.VANISHING_CURSE)) {
+                    if (item != null && (item.containsEnchantment(Enchantment.VANISHING_CURSE) || item.containsEnchantment(Enchantment.BINDING_CURSE))) {
                         e.getPlayer().getInventory().remove(item);
                     }
                 }
