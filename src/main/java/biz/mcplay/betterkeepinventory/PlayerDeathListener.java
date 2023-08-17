@@ -26,6 +26,11 @@ public class PlayerDeathListener implements Listener {
                         e.getPlayer().getInventory().remove(item);
                     }
                 }
+                for (ItemStack item : e.getPlayer().getEquipment().getArmorContents()) {
+                    if (item != null && (item.containsEnchantment(Enchantment.VANISHING_CURSE) || item.containsEnchantment(Enchantment.BINDING_CURSE))) {
+                        item.setAmount(0);
+                    }
+                }
             }
         }
 
