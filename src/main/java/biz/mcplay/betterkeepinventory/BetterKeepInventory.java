@@ -7,7 +7,8 @@ public final class BetterKeepInventory extends JavaPlugin {
 
     private boolean keepInventoryEnabled;
     private boolean keepExpEnabled;
-    private boolean keepCurseItems;
+    private boolean keepCurseOfVanishing;
+    private boolean keepCurseOfBinding;
 
 
     @Override
@@ -21,7 +22,8 @@ public final class BetterKeepInventory extends JavaPlugin {
         saveDefaultConfig();
         reloadConfig();
         keepInventoryEnabled = getConfig().getBoolean("keep-inventory.enabled");
-        keepCurseItems = getConfig().getBoolean("keep-inventory.keep-curse-items");
+        keepCurseOfVanishing = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_VANISHING");
+        keepCurseOfBinding = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_BINDING");
         keepExpEnabled = getConfig().getBoolean("keep-exp.enabled");
     }
 
@@ -29,11 +31,15 @@ public final class BetterKeepInventory extends JavaPlugin {
         return keepInventoryEnabled;
     }
 
-    public boolean getKeepCurseItems() {
-        return keepCurseItems;
-    }
-
     public boolean getKeepExpEnabled() {
         return keepExpEnabled;
+    }
+
+    public boolean keepCurseOfVanishing() {
+        return keepCurseOfVanishing;
+    }
+
+    public boolean keepCurseOfBinding() {
+        return keepCurseOfBinding;
     }
 }

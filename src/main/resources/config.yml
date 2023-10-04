@@ -1,5 +1,7 @@
 keep-inventory:
     enabled: true
-    keep-curse-items: false
+    enchantments:
+        CURSE_OF_VANISHING: false
+        CURSE_OF_BINDING: false
 keep-exp:
     enabled: true

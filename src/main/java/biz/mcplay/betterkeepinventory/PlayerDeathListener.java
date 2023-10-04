@@ -19,24 +19,23 @@ public class PlayerDeathListener implements Listener {
         if (plugin.getKeepInventoryEnabled()) {
             e.setKeepInventory(true);
             e.getDrops().clear();
-
-            if (!plugin.getKeepCurseItems()) {
-                for (ItemStack item : e.getPlayer().getInventory().getContents()) {
-                    if (item != null && (item.containsEnchantment(Enchantment.VANISHING_CURSE) || item.containsEnchantment(Enchantment.BINDING_CURSE))) {
-                        e.getPlayer().getInventory().remove(item);
-                    }
-                }
-                for (ItemStack item : e.getPlayer().getEquipment().getArmorContents()) {
-                    if (item != null && (item.containsEnchantment(Enchantment.VANISHING_CURSE) || item.containsEnchantment(Enchantment.BINDING_CURSE))) {
-                        item.setAmount(0);
-                    }
-                }
-            }
+            removeCurseItems(e);
         }
 
         if (plugin.getKeepExpEnabled()) {
             e.setKeepLevel(true);
             e.setDroppedExp(0);
+        }
+    }
+
+    public void removeCurseItems(PlayerDeathEvent e) {
+        for (ItemStack item : e.getPlayer().getInventory().getContents()) {
+            if (item == null) continue;
+            if (item.containsEnchantment(Enchantment.VANISHING_CURSE) && !plugin.keepCurseOfVanishing()) {
+                item.setAmount(0);
+            } else if (item.containsEnchantment(Enchantment.BINDING_CURSE) && !plugin.keepCurseOfBinding()) {
+                item.setAmount(0);
+            }
         }
     }
 }
