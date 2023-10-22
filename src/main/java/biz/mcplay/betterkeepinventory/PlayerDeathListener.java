@@ -45,8 +45,10 @@ public class PlayerDeathListener implements Listener {
 
             if (item.containsEnchantment(Enchantment.VANISHING_CURSE) && !plugin.keepCurseOfVanishing()) {
                 item.setAmount(0);
+                continue;
             } else if (item.containsEnchantment(Enchantment.BINDING_CURSE) && !plugin.keepCurseOfBinding()) {
                 item.setAmount(0);
+                continue;
             }
 
             ItemMeta meta = item.getItemMeta();
