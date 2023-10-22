@@ -6,6 +6,7 @@ keep-inventory:
   durability:
     min: 0.1
     max: 0.3
-keep-exp:
+keep-level:
   enabled: true
-  multiplier: 1.0
+  min: 0.1
+  max: 0.5
