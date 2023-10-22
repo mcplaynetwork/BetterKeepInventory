@@ -5,3 +5,4 @@ keep-inventory:
         CURSE_OF_BINDING: false
 keep-exp:
     enabled: true
+    multiplier: 1.0

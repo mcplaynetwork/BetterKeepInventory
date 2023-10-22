@@ -25,6 +25,7 @@ public final class BetterKeepInventory extends JavaPlugin {
         keepCurseOfVanishing = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_VANISHING");
         keepCurseOfBinding = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_BINDING");
         keepExpEnabled = getConfig().getBoolean("keep-exp.enabled");
+        keepExpMultiplier = getConfig().getDouble("keep-exp.multiplier");
     }
 
     public boolean getKeepInventoryEnabled() {
