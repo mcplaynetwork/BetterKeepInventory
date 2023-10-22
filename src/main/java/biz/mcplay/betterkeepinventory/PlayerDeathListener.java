@@ -29,8 +29,13 @@ public class PlayerDeathListener implements Listener {
     }
 
     public void removeCurseItems(PlayerDeathEvent e) {
-        for (ItemStack item : e.getPlayer().getInventory().getContents()) {
+        Inventory inv = e.getPlayer().getInventory();
+
+        for (int i = 0; i < inv.getSize(); i++) {
+            ItemStack item = inv.getItem(i);
+
             if (item == null) continue;
+
             if (item.containsEnchantment(Enchantment.VANISHING_CURSE) && !plugin.keepCurseOfVanishing()) {
                 item.setAmount(0);
             } else if (item.containsEnchantment(Enchantment.BINDING_CURSE) && !plugin.keepCurseOfBinding()) {
