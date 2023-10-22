@@ -61,6 +61,7 @@ public class PlayerDeathListener implements Listener {
                 int damage = (int) (maxDurability * durabilityMultiplier);
 
                 damageable.setDamage(damageable.getDamage() + damage);
+                item.setItemMeta(meta);
 
                 if (damageable.getDamage() >= maxDurability) {
                     item.setAmount(0);
