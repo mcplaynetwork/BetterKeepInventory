@@ -9,6 +9,9 @@ public final class BetterKeepInventory extends JavaPlugin {
     private boolean keepExpEnabled;
     private boolean keepCurseOfVanishing;
     private boolean keepCurseOfBinding;
+    private double minItemDurabilityMultiplier;
+    private double maxItemDurabilityMultiplier;
+    private double keepExpMultiplier;
 
 
     @Override
@@ -24,6 +27,8 @@ public final class BetterKeepInventory extends JavaPlugin {
         keepInventoryEnabled = getConfig().getBoolean("keep-inventory.enabled");
         keepCurseOfVanishing = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_VANISHING");
         keepCurseOfBinding = getConfig().getBoolean("keep-inventory.enchantments.CURSE_OF_BINDING");
+        minItemDurabilityMultiplier = getConfig().getDouble("keep-inventory.durability.min");
+        maxItemDurabilityMultiplier = getConfig().getDouble("keep-inventory.durability.max");
         keepExpEnabled = getConfig().getBoolean("keep-exp.enabled");
         keepExpMultiplier = getConfig().getDouble("keep-exp.multiplier");
     }
@@ -42,5 +47,13 @@ public final class BetterKeepInventory extends JavaPlugin {
 
     public boolean keepCurseOfBinding() {
         return keepCurseOfBinding;
+    }
+
+    public double getMinItemDurabilityMultiplier() {
+        return minItemDurabilityMultiplier;
+    }
+
+    public double getMaxItemDurabilityMultiplier() {
+        return maxItemDurabilityMultiplier;
     }
 }

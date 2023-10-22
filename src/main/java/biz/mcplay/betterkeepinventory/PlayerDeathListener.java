@@ -3,8 +3,14 @@ package biz.mcplay.betterkeepinventory;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.Sound;
+
+import java.util.Random;
 
 public class PlayerDeathListener implements Listener {
 
@@ -19,7 +25,7 @@ public class PlayerDeathListener implements Listener {
         if (plugin.getKeepInventoryEnabled()) {
             e.setKeepInventory(true);
             e.getDrops().clear();
-            removeCurseItems(e);
+            handleItems(e);
         }
 
         if (plugin.getKeepExpEnabled()) {
@@ -28,8 +34,9 @@ public class PlayerDeathListener implements Listener {
         }
     }
 
-    public void removeCurseItems(PlayerDeathEvent e) {
-        Inventory inv = e.getPlayer().getInventory();
+    public void handleItems(PlayerDeathEvent e) {
+        Random random = new Random();
+        Inventory inv = e.getEntity().getInventory();
 
         for (int i = 0; i < inv.getSize(); i++) {
             ItemStack item = inv.getItem(i);
@@ -40,6 +47,25 @@ public class PlayerDeathListener implements Listener {
                 item.setAmount(0);
             } else if (item.containsEnchantment(Enchantment.BINDING_CURSE) && !plugin.keepCurseOfBinding()) {
                 item.setAmount(0);
+            }
+
+            ItemMeta meta = item.getItemMeta();
+
+            if (meta instanceof Damageable) {
+                Damageable damageable = (Damageable) meta;
+
+                double minDurabilityMultiplier = plugin.getMinItemDurabilityMultiplier();
+                double maxDurabilityMultiplier = plugin.getMaxItemDurabilityMultiplier();
+                double durabilityMultiplier = minDurabilityMultiplier + (maxDurabilityMultiplier - minDurabilityMultiplier) * random.nextDouble();
+                int maxDurability = item.getType().getMaxDurability();
+                int damage = (int) (maxDurability * durabilityMultiplier);
+
+                damageable.setDamage(damageable.getDamage() + damage);
+
+                if (damageable.getDamage() >= maxDurability) {
+                    item.setAmount(0);
+                    e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
+                }
             }
         }
     }
