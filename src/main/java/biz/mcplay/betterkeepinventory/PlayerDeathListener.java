@@ -53,7 +53,7 @@ public class PlayerDeathListener implements Listener {
 
             ItemMeta meta = item.getItemMeta();
 
-            if (meta instanceof Damageable) {
+            if (item.getType().getMaxDurability() > 0) {
                 Damageable damageable = (Damageable) meta;
 
                 double minDurabilityMultiplier = plugin.getMinItemDurabilityMultiplier();
