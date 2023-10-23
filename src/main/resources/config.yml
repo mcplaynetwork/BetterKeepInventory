@@ -17,5 +17,6 @@ keep-level:
   # Randomly reduces the level upon death.
   # min: Minimum level reduction
   # max: Maximum level reduction
-  min: 0.1
-  max: 0.5
+  multiplier:
+    min: 0.1
+    max: 0.5
