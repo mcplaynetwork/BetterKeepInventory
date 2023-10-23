@@ -16,8 +16,26 @@ BetterKeepInventory is Minecraft plugin that allows you to optionally set them.
 
 ```yaml
 keep-inventory:
+  # If true, the inventory is kept.
   enabled: true
-  keep-curse-items: false
-keep-exp:
+  # If true, the enchanted item is kept.
+  enchantments:
+    CURSE_OF_VANISHING: false
+    CURSE_OF_BINDING: false
+  durability:
+    # Randomly reduces the durability of an item upon death.
+    # min: Minimum durability reduction
+    # max: Maximum durability reduction
+    min: 0.1
+    max: 0.3
+keep-level:
+  # If true, the level is kept.
   enabled: true
+  # Randomly reduces the level upon death.
+  # min: Minimum level reduction
+  # max: Maximum level reduction
+  multiplier:
+    min: 0.1
+    max: 0.5
+
 ```
