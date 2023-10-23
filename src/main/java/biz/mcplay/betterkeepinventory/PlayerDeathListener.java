@@ -31,6 +31,7 @@ public class PlayerDeathListener implements Listener {
         if (plugin.getKeepLevelEnabled()) {
             e.setKeepLevel(true);
             e.setDroppedExp(0);
+            handleLevels(e);
         }
     }
 
