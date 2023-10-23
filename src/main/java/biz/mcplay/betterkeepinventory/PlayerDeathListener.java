@@ -81,7 +81,7 @@ public class PlayerDeathListener implements Listener {
         double maxLevelMultiplier = plugin.getMaxLevelMultiplier();
         double levelMultiplier = minLevelMultiplier + (maxLevelMultiplier - minLevelMultiplier) * random.nextDouble();
         int playerLevel = e.getEntity().getLevel();
-        int level = (int) (playerLevel * levelMultiplier);
+        int level = (int) (playerLevel * (1 - levelMultiplier));
 
         e.getEntity().setLevel(level);
     }
