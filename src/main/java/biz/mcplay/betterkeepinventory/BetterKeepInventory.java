@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class BetterKeepInventory extends JavaPlugin {
 
     private boolean keepInventoryEnabled;
-    private boolean keepExpEnabled;
+    private boolean keepLevelEnabled;
     private boolean keepCurseOfVanishing;
     private boolean keepCurseOfBinding;
     private double minItemDurabilityMultiplier;
@@ -39,8 +39,8 @@ public final class BetterKeepInventory extends JavaPlugin {
         return keepInventoryEnabled;
     }
 
-    public boolean getKeepExpEnabled() {
-        return keepExpEnabled;
+    public boolean getKeepLevelEnabled() {
+        return keepLevelEnabled;
     }
 
     public boolean keepCurseOfVanishing() {
