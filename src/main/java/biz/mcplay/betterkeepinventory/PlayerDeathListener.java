@@ -53,20 +53,21 @@ public class PlayerDeathListener implements Listener {
             }
 
             ItemMeta meta = item.getItemMeta();
+            int maxDurability = item.getType().getMaxDurability();
 
-            if (item.getType().getMaxDurability() > 0) {
+            if (maxDurability > 0) {
                 Damageable damageable = (Damageable) meta;
 
                 double minDurabilityMultiplier = plugin.getMinItemDurabilityMultiplier();
                 double maxDurabilityMultiplier = plugin.getMaxItemDurabilityMultiplier();
                 double durabilityMultiplier = minDurabilityMultiplier + (maxDurabilityMultiplier - minDurabilityMultiplier) * random.nextDouble();
-                int currentDurability = damageable.getDamage();
+                int currentDurability = maxDurability - damageable.getDamage();
                 int damage = (int) (currentDurability * durabilityMultiplier);
 
                 damageable.setDamage(damageable.getDamage() + damage);
                 item.setItemMeta(meta);
 
-                if (damageable.getDamage() >= item.getType().getMaxDurability()) {
+                if (damageable.getDamage() >= maxDurability) {
                     item.setAmount(0);
                     e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
                 }
