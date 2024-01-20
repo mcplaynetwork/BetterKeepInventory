@@ -61,7 +61,7 @@ public class PlayerDeathListener implements Listener {
                 double maxDurabilityMultiplier = plugin.getMaxItemDurabilityMultiplier();
                 double durabilityMultiplier = minDurabilityMultiplier + (maxDurabilityMultiplier - minDurabilityMultiplier) * random.nextDouble();
                 int maxDurability = item.getType().getMaxDurability();
-                int damage = (int) (maxDurability * (1 - durabilityMultiplier));
+                int damage = (int) (maxDurability * durabilityMultiplier);
 
                 damageable.setDamage(damageable.getDamage() + damage);
                 item.setItemMeta(meta);
