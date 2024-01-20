@@ -66,7 +66,7 @@ public class PlayerDeathListener implements Listener {
                 damageable.setDamage(damageable.getDamage() + damage);
                 item.setItemMeta(meta);
 
-                if (damageable.getDamage() >= maxDurability) {
+                if (damageable.getDamage() >= item.getType().getMaxDurability()) {
                     item.setAmount(0);
                     e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
                 }
